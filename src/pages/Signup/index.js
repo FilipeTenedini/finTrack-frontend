@@ -5,35 +5,38 @@ import { Container, Logo } from './style';
 import { API_URL } from '../../API/URL';
 import Form from '../../components/Form';
 
-export default function Login() {
+export default function Signup() {
   const inputRef = useRef({});
   const navigate = useNavigate();
 
   function handleLogin(e) {
     e.preventDefault();
+    const name = inputRef.name.value;
     const email = inputRef.email.value;
     const password = inputRef.pass.value;
+    const confirmPassword = inputRef.confirmPass.value;
 
-    if (!email || !password) return alert('Preencha todos os campos');
+    if (!name || !email || !password || !confirmPassword) return alert('Preencha todos os campos');
 
-    const body = { email, password };
-    return axios
-      .post(`${API_URL}/user/signin`, body)
-      .then((res) => {
-        const { name } = res.data;
-        const { token } = res.data;
-        console.log(name, token);
-        navigate('/Home');
-      })
-      .catch((err) => console.log(err.response.data));
+    if (password !== confirmPassword) return alert('As senhas não são iguais');
+
+    const body = {
+      name, email, password, confirmPassword,
+    };
+    axios
+      .post(`${API_URL}/user/signup`, body)
+      .then(() => navigate('/'))
+      .catch((err) => console.log(err.response.data.message));
   }
 
   return (
     <Container>
       <Logo>MyWallet</Logo>
       <Form>
+        <input type="text" placeholder="Nome" ref={(element) => inputRef.name = element} />
         <input type="email" placeholder="E-mail" ref={(element) => inputRef.email = element} />
         <input type="password" placeholder="Senha" ref={(element) => inputRef.pass = element} />
+        <input type="password" placeholder="Confirme a senha" ref={(element) => inputRef.confirmPass = element} />
         <button type="submit" onClick={(e) => handleLogin(e)}> Entrar </button>
       </Form>
       <Link to="/cadastro">
