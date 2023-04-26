@@ -2,7 +2,6 @@ import axios from 'axios';
 import { useEffect, useContext, useState } from 'react';
 import { useParams, useNavigate, useLocation } from 'react-router-dom';
 import { AiOutlineRollback } from 'react-icons/ai';
-import { API_URL } from '../../API/URL';
 import { Container, Header } from './style';
 import Form from '../../components/Form';
 import { AuthContext } from '../../contexts/AuthContext/AuthContext';
@@ -34,7 +33,7 @@ export default function EditPage() {
       },
     };
     axios
-      .put(`${API_URL}/account/update_transaction`, body, config)
+      .put(`${process.env.REACT_APP_API_URL}/account/update_transaction`, body, config)
       .then(() => navigate('/home'))
       .catch(() => alert('Edição não realizada, tente novamente'));
   }

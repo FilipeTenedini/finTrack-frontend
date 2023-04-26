@@ -2,7 +2,6 @@ import { useRef } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { Container, Logo } from './style';
-import { API_URL } from '../../API/URL';
 import Form from '../../components/Form';
 
 export default function SignupPage() {
@@ -24,7 +23,7 @@ export default function SignupPage() {
       name, email, password, confirmPassword,
     };
     axios
-      .post(`${API_URL}/user/signup`, body)
+      .post(`${process.env.REACT_APP_API_URL}/user/signup`, body)
       .then(() => navigate('/'))
       .catch((err) => console.log(err.response.data.message));
   }

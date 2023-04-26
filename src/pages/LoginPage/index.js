@@ -2,7 +2,6 @@ import { useContext, useRef } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { Container, Logo } from './style';
-import { API_URL } from '../../API/URL';
 import Form from '../../components/Form';
 import { AuthContext } from '../../contexts/AuthContext/AuthContext';
 
@@ -27,7 +26,7 @@ export default function LoginPage() {
     const body = { email, password };
 
     return axios
-      .post(`${API_URL}/user/signin`, body)
+      .post(`${process.env.REACT_APP_API_URL}/user/signin`, body)
       .then((res) => {
         const { name } = res.data;
         const { token } = res.data;

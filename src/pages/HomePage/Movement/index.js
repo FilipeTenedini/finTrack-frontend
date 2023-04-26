@@ -3,7 +3,6 @@ import { useNavigate, Link } from 'react-router-dom';
 import axios from 'axios';
 import { AiOutlineClose } from 'react-icons/ai';
 import { Register } from './style';
-import { API_URL } from '../../../API/URL';
 import { AuthContext } from '../../../contexts/AuthContext/AuthContext';
 
 export default function Movement({ item, setMovements }) {
@@ -24,7 +23,7 @@ export default function Movement({ item, setMovements }) {
       data: item,
     };
     axios
-      .delete(`${API_URL}/account/delete_transaction`, config)
+      .delete(`${process.env.REACT_APP_API_URL}/account/delete_transaction`, config)
       .then(() => {
         setMovements((prevState) => prevState.filter((i) => i !== item));
       })

@@ -10,7 +10,6 @@ import {
   ButtonsContainer,
 } from './style';
 import { AuthContext } from '../../contexts/AuthContext/AuthContext';
-import { API_URL } from '../../API/URL';
 import TransactionsList from './TransactionsList';
 
 export default function HomePage() {
@@ -32,7 +31,7 @@ export default function HomePage() {
       },
     };
     axios
-      .get(`${API_URL}/account/movements`, config)
+      .get(`${process.env.REACT_APP_API_URL}/account/movements`, config)
       .then((res) => {
         const accBalance = res.data.reduce((acc, value) => {
           if (value.type === 'positive') {

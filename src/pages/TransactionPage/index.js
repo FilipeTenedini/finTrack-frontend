@@ -5,7 +5,6 @@ import { AiOutlineRollback } from 'react-icons/ai';
 import { Container, Header } from './style';
 import Form from '../../components/Form';
 import { AuthContext } from '../../contexts/AuthContext/AuthContext';
-import { API_URL } from '../../API/URL';
 
 export default function TransactionPage() {
   const { tipo } = useParams();
@@ -41,7 +40,7 @@ export default function TransactionPage() {
       },
     };
     axios
-      .post(`${API_URL}/account/new_transaction/${opType}`, body, config)
+      .post(`${process.env.REACT_APP_API_URL}/account/new_transaction/${opType}`, body, config)
       .then(() => navigate('/home'))
       .catch((err) => console.log(err.response.data.message));
   }
