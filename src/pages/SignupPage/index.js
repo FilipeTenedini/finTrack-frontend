@@ -5,7 +5,7 @@ import { Container, Logo } from './style';
 import { API_URL } from '../../API/URL';
 import Form from '../../components/Form';
 
-export default function Signup() {
+export default function SignupPage() {
   const inputRef = useRef({});
   const navigate = useNavigate();
 
@@ -37,10 +37,10 @@ export default function Signup() {
         <input type="email" placeholder="E-mail" ref={(element) => inputRef.email = element} />
         <input type="password" placeholder="Senha" ref={(element) => inputRef.pass = element} />
         <input type="password" placeholder="Confirme a senha" ref={(element) => inputRef.confirmPass = element} />
-        <button type="submit" onClick={(e) => handleLogin(e)}> Entrar </button>
+        <button type="submit" onClick={(e) => handleLogin(e)}> Cadastrar </button>
       </Form>
-      <Link to="/cadastro">
-        Primeira vez? Cadastre-se!
+      <Link to="/">
+        Já tem uma conta? Entre agora!
       </Link>
     </Container>
   );

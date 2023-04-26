@@ -1,18 +1,20 @@
-import { useRef } from 'react';
+import { useContext, useRef } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { Container, Logo } from './style';
 import { API_URL } from '../../API/URL';
 import Form from '../../components/Form';
+import { AuthContext } from '../../contexts/AuthContext/AuthContext';
 
-export default function Login() {
+export default function LoginPage() {
   const inputRef = useRef({});
   const navigate = useNavigate();
 
+  const { setAuth } = useContext(AuthContext);
+
   function handleLogin(e) {
     e.preventDefault();
-    const email = inputRef.email.value;
-    const password = inputRef.pass.value;
+    const { email: { value: email }, pass: { value: password } } = inputRef;
 
     if (!email || !password) return alert('Preencha todos os campos');
 
@@ -22,7 +24,7 @@ export default function Login() {
       .then((res) => {
         const { name } = res.data;
         const { token } = res.data;
-        console.log(name, token);
+        setAuth({ name, token });
         navigate('/Home');
       })
       .catch((err) => console.log(err.response.data));

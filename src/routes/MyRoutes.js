@@ -1,17 +1,17 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import Login from '../pages/Login';
-import Signup from '../pages/Signup';
-import Home from '../pages/Home';
-import Transaction from '../pages/Transaction';
+import LoginPage from '../pages/LoginPage';
+import SignupPage from '../pages/SignupPage';
+import HomePage from '../pages/HomePage';
+import TransactionPage from '../pages/TransactionPage';
 
 export default function MyRoutes() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route exact path="/" element={<Login />} />
-        <Route exact path="/cadastro" element={<Signup />} />
-        <Route exact path="/home" element={<Home />} />
-        <Route exact path="/nova-transacao/:tipo" element={<Transaction />} />
+        <Route exact path="/" element={<LoginPage />} />
+        <Route exact path="/cadastro" element={<SignupPage />} />
+        <Route exact path="/home" element={<HomePage />} />
+        <Route exact path="/nova-transacao/:tipo" element={<TransactionPage />} />
       </Routes>
     </BrowserRouter>
   );

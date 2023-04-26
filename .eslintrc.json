@@ -25,6 +25,10 @@
       "no-console": "off",
       "no-alert": "off",
       "no-return-assign": "off",
-      "consistent-return": "off"
+      "consistent-return": "off",
+      "react/button-has-type": "off",
+      "react/jsx-one-expression-per-line": "off",
+      "no-param-reassign": "off",
+      "react/no-array-index-key": "off"
     }
 }
