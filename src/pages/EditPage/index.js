@@ -33,7 +33,6 @@ export default function EditPage() {
         authorization: `Bearer ${token}`,
       },
     };
-    console.log(body);
     axios
       .put(`${API_URL}/account/update_transaction`, body, config)
       .then(() => navigate('/home'))
