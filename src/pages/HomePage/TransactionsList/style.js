@@ -16,19 +16,19 @@ export const BalanceArea = styled.div`
   width: 100%;
   padding-top: 10px;
   padding-bottom: 10px;
-  padding-left: 12px;
-  padding-right: 1px;
   display: flex;
   align-items: center;
   justify-content: space-between;
 
   div{
+    margin-left: 20px;
     font-weight: 700;
     font-size: 17px;
     line-height: 20px;
     color: ${({ theme }) => theme.darkTextColor};
   }
   p {
+    margin-right: 5px;
     text-align: end;
     padding-right:10px;
     font-weight: 400;

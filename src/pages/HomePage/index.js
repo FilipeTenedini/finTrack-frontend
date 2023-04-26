@@ -17,10 +17,12 @@ export default function HomePage() {
   const [movements, setMovements] = useState([]);
   const [balance, setBalance] = useState();
   const navigate = useNavigate();
-  const { auth: { name, token } } = useContext(AuthContext);
+  const { auth: { name, token }, setAuth } = useContext(AuthContext);
 
   useEffect(() => {
-    if (!token) return navigate('/');
+    const user = JSON.parse(localStorage.getItem('userToken'));
+    if (!user.token) return navigate('/');
+    setAuth({ name: user.name, token: user.token });
   }, []);
 
   useEffect(() => {
@@ -40,15 +42,17 @@ export default function HomePage() {
           }
           return acc;
         }, 0);
-        console.log(res.data);
         const sortedMovements = res.data.sort((a, b) => Date.parse(a.data) - Date.parse(b.data))
           .reverse();
         setMovements(sortedMovements);
         setBalance(parseFloat(accBalance));
       })
       .catch((err) => console.log(err.response.data.message));
-  }, []);
+  }, [token]);
 
+  // function handleLogout() {
+  //   localStorage.clear();
+  // }
   return (
     <Container>
       <Header>
@@ -66,18 +70,18 @@ export default function HomePage() {
       </TransactionsContainer>
 
       <ButtonsContainer>
-        <button>
-          <Link to="/nova-transacao/entrada">
+        <Link to="/nova-transacao/entrada">
+          <button>
             <AiOutlinePlusCircle />
             <p>Nova <br /> entrada</p>
-          </Link>
-        </button>
-        <button>
-          <Link to="/nova-transacao/saida">
+          </button>
+        </Link>
+        <Link to="/nova-transacao/saida">
+          <button>
             <AiOutlineMinusCircle />
             <p>Nova <br />saída</p>
-          </Link>
-        </button>
+          </button>
+        </Link>
       </ButtonsContainer>
 
     </Container>

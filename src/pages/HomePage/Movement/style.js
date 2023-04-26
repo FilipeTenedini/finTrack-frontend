@@ -16,7 +16,13 @@ export const Register = styled.div`
     margin-right: 8px;
     color: ${({ theme }) => theme.lightTextColor};
   }
-
+  div:nth-child(2){
+    max-width: 100px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    color: ${({ theme }) => theme.darkTextColor};
+  }
   div:nth-child(3){
     display: inline-flex;
     position: absolute;

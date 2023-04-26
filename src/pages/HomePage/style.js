@@ -43,7 +43,6 @@ export const TransactionsContainer = styled.section`
   align-items: center;
 
   p{
-    width: 80%;
     max-width: 280px;
     color: ${({ theme }) => theme.lightTextColor};
     font-style: normal;
@@ -61,21 +60,25 @@ export const ButtonsContainer = styled.section`
   align-items: center;
   justify-content: center;
   gap: 10px;
-
-  button {
+  a{
+    text-decoration: none;
+    font-style: none;
     width: 156px;
     height: 100px;
-    background-color: ${({ theme }) => theme.btnBgColor};
+    cursor: pointer;
+
+  }
+  button {
+    width: 100%;
+    height: 100%;
     border: none;
     outline: none;
     border-radius: 5px;
     position: relative;
+    background-color: ${({ theme }) => theme.btnBgColor};
+    color: ${({ theme }) => theme.btnColor};
+    cursor: pointer;
 
-    a{
-      text-decoration: none;
-      font-style: none;
-      color: ${({ theme }) => theme.btnColor};
-    }
     svg{
       position: absolute;
       top: 10px;
