@@ -1,6 +1,7 @@
 import { useContext } from 'react';
 import { ThemeProvider } from 'styled-components';
 import { ResetCss } from '../../styles/resetCss';
+import { GlobalStyle } from '../../styles/GlobalStyle';
 import MyRoutes from '../../routes/MyRoutes';
 import { Container } from './style';
 import { ThemeContext } from '../../contexts/ThemeContext/ThemeContext';
@@ -14,6 +15,7 @@ function App() {
       <AuthProvider>
         <Container>
           <ResetCss />
+          <GlobalStyle />
           <MyRoutes />
         </Container>
       </AuthProvider>
