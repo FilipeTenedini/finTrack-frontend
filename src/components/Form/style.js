@@ -25,6 +25,22 @@ export const FormArea = styled.div`
     }
   }
 
+  input[type="checkbox"]{
+    width: 18px;
+    margin-left: 20px;
+    padding: 0;
+    margin-bottom: 0;
+  }
+  div {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    color: ${({ theme }) => theme.btnColor};
+  }
   button{
     background-color: ${({ theme }) => theme.btnBgColor};
     color: ${({ theme }) => theme.btnColor};

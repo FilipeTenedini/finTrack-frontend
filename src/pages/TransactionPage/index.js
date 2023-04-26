@@ -1,6 +1,7 @@
 import axios from 'axios';
 import { useContext, useRef, useEffect } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
+import { AiOutlineRollback } from 'react-icons/ai';
 import { Container, Header } from './style';
 import Form from '../../components/Form';
 import { AuthContext } from '../../contexts/AuthContext/AuthContext';
@@ -42,6 +43,9 @@ export default function TransactionPage() {
       .then(() => navigate('/home'))
       .catch((err) => console.log(err.response.data.message));
   }
+  function handleGoBack() {
+    return navigate('/home');
+  }
 
   return (
     <Container>
@@ -50,6 +54,7 @@ export default function TransactionPage() {
           <h1>
             Nova {tipo}
           </h1>
+          <AiOutlineRollback onClick={() => handleGoBack()} />
         </div>
       </Header>
       <Form>

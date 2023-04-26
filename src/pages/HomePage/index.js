@@ -21,8 +21,8 @@ export default function HomePage() {
 
   useEffect(() => {
     const user = JSON.parse(localStorage.getItem('userToken'));
-    if (!user.token) return navigate('/');
-    setAuth({ name: user.name, token: user.token });
+    if (!user && !token) return navigate('/');
+    if (user) return setAuth({ name: user.name, token: user.token });
   }, []);
 
   useEffect(() => {
@@ -50,9 +50,11 @@ export default function HomePage() {
       .catch((err) => console.log(err.response.data.message));
   }, [token]);
 
-  // function handleLogout() {
-  //   localStorage.clear();
-  // }
+  function handleLogout() {
+    localStorage.clear();
+    navigate('/');
+  }
+
   return (
     <Container>
       <Header>
@@ -60,7 +62,7 @@ export default function HomePage() {
           <h1>
             Olá, {name}
           </h1>
-          <BiExit />
+          <BiExit onClick={() => handleLogout()} />
         </div>
       </Header>
       <TransactionsContainer>
