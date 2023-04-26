@@ -9,12 +9,14 @@ import { API_URL } from '../../API/URL';
 
 export default function TransactionPage() {
   const { tipo } = useParams();
-  const { auth: { token } } = useContext(AuthContext);
+  const { auth: { token }, setAuth } = useContext(AuthContext);
   const inputsRef = useRef();
   const navigate = useNavigate();
 
   useEffect(() => {
-    if (!token) return navigate('/');
+    const user = JSON.parse(localStorage.getItem('userToken'));
+    if (!user && !token) return navigate('/');
+    if (user) return setAuth({ name: user.name, token: user.token });
   }, []);
 
   function handleSubmit(e) {

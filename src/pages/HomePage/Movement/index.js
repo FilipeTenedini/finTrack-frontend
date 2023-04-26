@@ -1,5 +1,5 @@
 import { useContext, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import axios from 'axios';
 import { AiOutlineClose } from 'react-icons/ai';
 import { Register } from './style';
@@ -34,8 +34,12 @@ export default function Movement({ item, setMovements }) {
   return (
     <Register opColor={item.type}>
       <div>{item.data.slice(0, 5)}</div>
-      <div>{item.desc}</div>
-      <div> {item.opValue.toFixed(2).replace('.', ',')}</div>
+      <div>
+        <Link to={`/editar-registro/${item.type === 'negative' ? 'saida' : 'entrada'}`} state={{ item }}>
+          {item.desc}
+        </Link>
+      </div>
+      <div> {item.opValue}</div>
       <div>
         <AiOutlineClose onClick={() => handleDeleteMovement()} />
       </div>

@@ -22,7 +22,11 @@ export const Register = styled.div`
     text-overflow: ellipsis;
     white-space: nowrap;
     overflow: hidden;
-    color: ${({ theme }) => theme.darkTextColor};
+
+    a{
+      text-decoration: none;
+      color: ${({ theme }) => theme.darkTextColor};
+    }
   }
   div:nth-child(3){
     display: inline-flex;

@@ -3,15 +3,17 @@ import LoginPage from '../pages/LoginPage';
 import SignupPage from '../pages/SignupPage';
 import HomePage from '../pages/HomePage';
 import TransactionPage from '../pages/TransactionPage';
+import EditPage from '../pages/EditPage';
 
 export default function MyRoutes() {
   return (
     <BrowserRouter>
       <Routes>
         <Route exact path="/" element={<LoginPage />} />
-        <Route exact path="/cadastro" element={<SignupPage />} />
-        <Route exact path="/home" element={<HomePage />} />
-        <Route exact path="/nova-transacao/:tipo" element={<TransactionPage />} />
+        <Route path="/cadastro" element={<SignupPage />} />
+        <Route path="/home" element={<HomePage />} />
+        <Route path="/nova-transacao/:tipo" element={<TransactionPage />} />
+        <Route path="/editar-registro/:tipo" element={<EditPage />} />
       </Routes>
     </BrowserRouter>
   );
