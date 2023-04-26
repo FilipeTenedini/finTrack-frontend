@@ -41,6 +41,7 @@ export const TransactionsContainer = styled.section`
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  position: relative;
 
   p{
     max-width: 280px;

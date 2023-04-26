@@ -8,6 +8,8 @@ export const TransactionsArea = styled.div`
   align-items: center;
   overflow-y: scroll;
   color: blue;
+  position: relative;
+
   &&::-webkit-scrollbar {
     display: none;
   }
@@ -19,6 +21,8 @@ export const BalanceArea = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
+  position: absolute;
+  bottom: 0;
 
   div{
     font-weight: 700;
