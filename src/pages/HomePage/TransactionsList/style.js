@@ -21,14 +21,13 @@ export const BalanceArea = styled.div`
   justify-content: space-between;
 
   div{
-    margin-left: 20px;
     font-weight: 700;
     font-size: 17px;
     line-height: 20px;
     color: ${({ theme }) => theme.darkTextColor};
+    padding-left: 10px;
   }
   p {
-    margin-right: 5px;
     text-align: end;
     padding-right:10px;
     font-weight: 400;

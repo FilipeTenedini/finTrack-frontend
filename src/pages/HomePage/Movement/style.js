@@ -1,7 +1,8 @@
 import styled from 'styled-components';
 
 export const Register = styled.div`
-  width: 95%;
+  width: 100%;
+  padding: 0 10px;
   display: flex;
   justify-content: flex-start;
   margin-bottom: 25px;
@@ -11,13 +12,13 @@ export const Register = styled.div`
   font-size: 16px;
   line-height: 19px;
   color: ${({ theme }) => theme.darkTextColor};
-
+  align-items:center;
   div:nth-child(1){
     margin-right: 8px;
     color: ${({ theme }) => theme.lightTextColor};
   }
   div:nth-child(2){
-    max-width: 100px;
+    max-width: 120px;
     text-overflow: ellipsis;
     white-space: nowrap;
     overflow: hidden;
@@ -26,7 +27,15 @@ export const Register = styled.div`
   div:nth-child(3){
     display: inline-flex;
     position: absolute;
-    right: 1px;
+    right: 20px;
     color: ${({ theme, opColor }) => theme[opColor]};
+  }
+  div:nth-child(4){
+    font-size: 10px;
+    display: flex;
+    position: absolute;
+    right: 2px;
+    color: ${({ theme }) => theme.lightTextColor};
+    cursor: pointer;
   }
 `;
