@@ -36,7 +36,7 @@ export default function LoginPage() {
         }
         navigate('/Home');
       })
-      .catch((err) => console.log(err.response.data));
+      .catch(() => alert('Dados de login inválidos.'));
   }
 
   return (
