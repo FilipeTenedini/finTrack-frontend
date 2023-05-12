@@ -47,7 +47,7 @@ export default function HomePage() {
         setBalance(parseFloat(accBalance));
       })
       .catch((err) => console.log(err.response.data.message));
-  }, [token]);
+  }, [token, movements]);
 
   function handleLogout() {
     localStorage.clear();

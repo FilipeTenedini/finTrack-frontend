@@ -38,7 +38,7 @@ export default function Movement({ item, setMovements }) {
           {item.desc}
         </Link>
       </div>
-      <div> {item.opValue}</div>
+      <div>{item.type === 'negative' ? '-' : '+'} R$ {item.opValue.toFixed(2).replace('.', ',')}</div>
       <div>
         <AiOutlineClose onClick={() => handleDeleteMovement()} />
       </div>

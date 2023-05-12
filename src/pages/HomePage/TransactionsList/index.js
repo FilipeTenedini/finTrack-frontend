@@ -11,7 +11,7 @@ export default function TransactionsList({ movements, balance, setMovements }) {
       </TransactionsArea>
       <BalanceArea color={balance < 0 ? 'negative' : 'positive'}>
         <div>SALDO</div>
-        <p>R$ {balance.toFixed(2)}</p>
+        <p>R$ {balance.toFixed(2).replace('.', ',')}</p>
       </BalanceArea>
     </>
   );
