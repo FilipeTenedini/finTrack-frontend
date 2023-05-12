@@ -2,7 +2,9 @@
 
 <details>
 <summary>    
-Pictures
+  
+##  Pictures
+  
 </summary>
 
 ![image](https://github.com/FilipeTenedini/finTrack-frontend/assets/105571583/942edcab-d28d-45af-b4b2-e29688f4711f)
