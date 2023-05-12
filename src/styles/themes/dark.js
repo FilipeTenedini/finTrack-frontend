@@ -1,7 +1,7 @@
 export default {
   titleColor: '#FFF',
   backgroundColor: '#122636',
-  inputColor: '#000',
+  inputColor: '#122636',
   btnBgColor: '#2A2E43',
   btnColor: '#FFF',
   darkTextColor: '#000',
@@ -10,4 +10,5 @@ export default {
   negative: '#C70000',
   transactionsBgColor: '#FFF',
   detailsColor: '#00FF7B',
+  linkColor: '#FFF',
 };

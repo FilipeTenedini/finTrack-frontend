@@ -30,7 +30,7 @@ export default function SignupPage() {
 
   return (
     <Container>
-      <Logo>MyWallet</Logo>
+      <Logo>FinTrack</Logo>
       <Form>
         <input type="text" placeholder="Nome" ref={(element) => inputRef.name = element} />
         <input type="email" placeholder="E-mail" ref={(element) => inputRef.email = element} />

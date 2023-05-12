@@ -39,7 +39,7 @@ export const FormArea = styled.div`
     font-style: normal;
     font-weight: 400;
     font-size: 16px;
-    color: ${({ theme }) => theme.btnColor};
+    color: ${({ theme }) => theme.linkColor};
   }
   button{
     background-color: ${({ theme }) => theme.btnBgColor};

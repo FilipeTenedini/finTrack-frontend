@@ -41,7 +41,7 @@ export default function LoginPage() {
 
   return (
     <Container>
-      <Logo>MyWallet</Logo>
+      <Logo>FinTrack</Logo>
       <Form>
         <input type="email" placeholder="E-mail" ref={(element) => inputRef.email = element} />
         <input type="password" placeholder="Senha" ref={(element) => inputRef.pass = element} />

@@ -17,7 +17,6 @@ export const Container = styled.div`
     line-height: 18px;
   }
 `;
-
 export const Logo = styled.h1`
   font-family: 'Saira Stencil One', cursive;
   color: ${({ theme }) => theme.titleColor};

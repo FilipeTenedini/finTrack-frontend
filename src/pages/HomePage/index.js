@@ -1,4 +1,9 @@
-import { useContext, useState, useEffect } from 'react';
+import {
+  useContext,
+  useState,
+  useEffect,
+  useRef,
+} from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import axios from 'axios';
 import { BiExit } from 'react-icons/bi';
@@ -18,6 +23,8 @@ export default function HomePage() {
   const navigate = useNavigate();
   const { auth: { name, token }, setAuth } = useContext(AuthContext);
 
+  const firstRender = useRef(true);
+
   useEffect(() => {
     const user = JSON.parse(localStorage.getItem('userToken'));
     if (!user && !token) return navigate('/');
@@ -25,30 +32,34 @@ export default function HomePage() {
   }, []);
 
   useEffect(() => {
-    const config = {
-      headers: {
-        authorization: `Bearer ${token}`,
-      },
-    };
-    axios
-      .get(`${process.env.REACT_APP_API_URL}/account/movements`, config)
-      .then((res) => {
-        const accBalance = res.data.reduce((acc, value) => {
-          if (value.type === 'positive') {
-            acc += value.opValue;
-          } else if (value.type === 'negative') {
-            acc -= value.opValue;
-          }
-          return acc;
-        }, 0);
+    const config = { headers: { authorization: `Bearer ${token}` } };
+    (async () => {
+      try {
+        const res = await axios.get(`${process.env.REACT_APP_API_URL}/account/movements`, config);
         const sortedMovements = res.data.sort((a, b) => Date.parse(a.data) - Date.parse(b.data))
           .reverse();
         setMovements(sortedMovements);
-        setBalance(parseFloat(accBalance));
-      })
-      .catch((err) => console.log(err.response.data.message));
-  }, [token]);
+      } catch (err) {
+        console.log(err.response.data.message);
+      }
+    })();
+  }, []);
 
+  useEffect(() => {
+    if (firstRender.current) {
+      firstRender.current = false;
+      return;
+    }
+    const accBalance = movements.reduce((acc, value) => {
+      if (value.type === 'positive') {
+        acc += value.opValue;
+      } else if (value.type === 'negative') {
+        acc -= value.opValue;
+      }
+      return acc;
+    }, 0);
+    setBalance(parseFloat(accBalance));
+  }, [movements]);
   function handleLogout() {
     localStorage.clear();
     navigate('/');

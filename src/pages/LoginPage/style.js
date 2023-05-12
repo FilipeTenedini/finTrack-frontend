@@ -9,7 +9,7 @@ export const Container = styled.div`
 
   a{
     margin-top: 36px;
-    color: ${({ theme }) => theme.btnColor};
+    color: ${({ theme }) => theme.linkColor};
     text-decoration: none;
     font-style: normal;
     font-weight: 700;
@@ -17,7 +17,6 @@ export const Container = styled.div`
     line-height: 18px;
   }
 `;
-
 export const Logo = styled.h1`
   font-family: 'Saira Stencil One', cursive;
   color: ${({ theme }) => theme.titleColor};
