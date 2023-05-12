@@ -64,7 +64,7 @@ export const ButtonsContainer = styled.section`
   a{
     text-decoration: none;
     font-style: none;
-    width: 156px;
+    width: 100%;
     height: 100px;
     cursor: pointer;
 
