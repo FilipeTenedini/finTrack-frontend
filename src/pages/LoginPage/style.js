@@ -23,7 +23,7 @@ export const Logo = styled.h1`
   color: ${({ theme }) => theme.titleColor};
   font-style: normal;
   font-weight: 400;
-  font-size: 32px;
+  font-size: 42px;
   line-height: 50px;
   margin-bottom: 24px;
 `;

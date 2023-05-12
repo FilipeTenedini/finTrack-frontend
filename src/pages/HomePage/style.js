@@ -29,6 +29,10 @@ export const Header = styled.header`
       font-weight: 700;
       line-height: 31px;
     }
+
+    svg {
+      color: ${({ theme }) => theme.detailsColor};
+    }
   }
 `;
 export const TransactionsContainer = styled.section`
@@ -85,6 +89,7 @@ export const ButtonsContainer = styled.section`
       top: 10px;
       left: 10px;
       font-size: 22px;
+      color: ${({ theme }) => theme.detailsColor};
     }
     p {
       position: absolute;

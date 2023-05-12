@@ -59,8 +59,16 @@ export default function TransactionPage() {
         </div>
       </Header>
       <Form>
-        <input type="number" ref={(element) => inputsRef.value = element} />
-        <input type="text" ref={(element) => inputsRef.desc = element} />
+        <input
+          type="number"
+          ref={(element) => inputsRef.value = element}
+          placeholder="Valor"
+        />
+        <input
+          type="text"
+          ref={(element) => inputsRef.desc = element}
+          placeholder="Descrição"
+        />
         <button type="submit" onClick={(e) => handleSubmit(e)}> Salvar {tipo} </button>
       </Form>
     </Container>

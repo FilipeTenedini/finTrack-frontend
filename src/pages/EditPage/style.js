@@ -30,5 +30,9 @@ export const Header = styled.header`
       font-weight: 700;
       line-height: 31px;
     }
+
+    svg{
+      color: ${({ theme }) => theme.detailsColor};
+    }
   }
 `;
