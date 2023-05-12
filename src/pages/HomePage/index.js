@@ -7,6 +7,7 @@ import {
 import { useNavigate, Link } from 'react-router-dom';
 import axios from 'axios';
 import { BiExit } from 'react-icons/bi';
+import { SiWolframmathematica } from 'react-icons/si';
 import { AiOutlineMinusCircle, AiOutlinePlusCircle } from 'react-icons/ai';
 import {
   Container,
@@ -17,12 +18,14 @@ import {
 import { AuthContext } from '../../contexts/AuthContext/AuthContext';
 import TransactionsList from './TransactionsList';
 import Loader from '../../components/Loaders/Loader';
+import { ThemeContext } from '../../contexts/ThemeContext/ThemeContext';
 
 export default function HomePage() {
   const [movements, setMovements] = useState([]);
   const [balance, setBalance] = useState();
   const [loading, setLoading] = useState(true);
   const navigate = useNavigate();
+  const { handleToggleTheme } = useContext(ThemeContext);
   const { auth: { name, token }, setAuth } = useContext(AuthContext);
 
   const firstRender = useRef(true);
@@ -77,6 +80,7 @@ export default function HomePage() {
           <h1>
             Olá, {name}
           </h1>
+          <SiWolframmathematica onClick={handleToggleTheme} />
           <BiExit onClick={() => handleLogout()} />
         </div>
       </Header>

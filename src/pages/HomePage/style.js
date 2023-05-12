@@ -23,7 +23,7 @@ export const Header = styled.header`
     justify-content: space-between;
     align-items:center;
     color: ${({ theme }) => theme.titleColor};
-    font-size: 26px;
+    font-size: 18px;
 
     h1{
       font-style: normal;
@@ -32,7 +32,15 @@ export const Header = styled.header`
     }
 
     svg {
-      color: ${({ theme }) => theme.detailsColor};
+      font-size: 26px;
+
+      &:nth-child(2n){
+        position: absolute;
+        right: 70px;
+      }
+      &:nth-child(3n){
+        color: ${({ theme }) => theme.detailsColor};
+      }
     }
   }
 `;

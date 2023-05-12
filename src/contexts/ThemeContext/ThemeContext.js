@@ -13,8 +13,9 @@ export default function ThemeProv({ children }) {
 
   useEffect(() => {
     const userTheme = JSON.parse(localStorage.getItem('userTheme'));
+    console.log(userTheme.theme);
     if (!userTheme) return setTheme('dark');
-    return setTheme(userTheme);
+    return setTheme(userTheme.theme);
   }, []);
 
   const currentTheme = useMemo(() => {
@@ -23,9 +24,9 @@ export default function ThemeProv({ children }) {
   }, [theme]);
 
   function handleToggleTheme() {
-    console.log('temoai');
-    setTheme((prevState) => (prevState === 'dark' ? 'light' : 'dark'));
-    localStorage.setItem('userTheme', JSON.stringify({ theme }));
+    const actualColor = theme === 'light' ? 'dark' : 'light';
+    setTheme(actualColor);
+    localStorage.setItem('userTheme', JSON.stringify({ theme: actualColor }));
   }
 
   const value = useMemo(() => ({ theme, handleToggleTheme, currentTheme }));
