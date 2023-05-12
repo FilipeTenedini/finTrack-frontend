@@ -47,7 +47,7 @@ export default function HomePage() {
         setBalance(parseFloat(accBalance));
       })
       .catch((err) => console.log(err.response.data.message));
-  }, [token, movements]);
+  }, [token]);
 
   function handleLogout() {
     localStorage.clear();
@@ -64,7 +64,9 @@ export default function HomePage() {
           <BiExit onClick={() => handleLogout()} />
         </div>
       </Header>
-      <TransactionsContainer>
+      <TransactionsContainer
+        movLength={movements.length > 0 ? '' : 'center'}
+      >
         {movements.length > 0
           ? <TransactionsList balance={balance} movements={movements} setMovements={setMovements} />
           : <p>Não há registros de entrada ou saída</p>}

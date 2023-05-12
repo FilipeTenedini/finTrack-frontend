@@ -43,13 +43,12 @@ export const TransactionsContainer = styled.section`
   border-radius: 5px;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: ${({ movLength }) => movLength};
   align-items: center;
   position: relative;
 
   p{
     max-width: 280px;
-    color: ${({ theme }) => theme.lightTextColor};
     font-style: normal;
     font-weight: 400;
     font-size: 20px;
