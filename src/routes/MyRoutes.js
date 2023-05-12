@@ -10,10 +10,10 @@ export default function MyRoutes() {
     <BrowserRouter>
       <Routes>
         <Route exact path="/" element={<LoginPage />} />
-        <Route path="/cadastro" element={<SignupPage />} />
+        <Route path="/register" element={<SignupPage />} />
         <Route path="/home" element={<HomePage />} />
-        <Route path="/nova-transacao/:tipo" element={<TransactionPage />} />
-        <Route path="/editar-registro/:tipo" element={<EditPage />} />
+        <Route path="/new-transaction/:type" element={<TransactionPage />} />
+        <Route path="/edit-transaction/:type" element={<EditPage />} />
       </Routes>
     </BrowserRouter>
   );
