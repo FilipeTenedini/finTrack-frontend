@@ -1,8 +1,8 @@
 export default {
   titleColor: '#FFF',
-  backgroundColor: '#122636',
+  backgroundColor: '#16447F',
   inputColor: '#122636',
-  btnBgColor: '#16447F',
+  btnBgColor: '#122636',
   btnColor: '#FFF',
   darkTextColor: '#000',
   lightTextColor: '#868686',
