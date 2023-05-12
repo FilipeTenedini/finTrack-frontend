@@ -52,5 +52,8 @@ export const FormArea = styled.div`
     height: 46px;
     border: none;
     cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
 `;

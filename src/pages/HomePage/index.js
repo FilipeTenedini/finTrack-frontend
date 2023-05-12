@@ -16,10 +16,12 @@ import {
 } from './style';
 import { AuthContext } from '../../contexts/AuthContext/AuthContext';
 import TransactionsList from './TransactionsList';
+import Loader from '../../components/Loaders/Loader';
 
 export default function HomePage() {
   const [movements, setMovements] = useState([]);
   const [balance, setBalance] = useState();
+  const [loading, setLoading] = useState(true);
   const navigate = useNavigate();
   const { auth: { name, token }, setAuth } = useContext(AuthContext);
 
@@ -41,6 +43,8 @@ export default function HomePage() {
         setMovements(sortedMovements);
       } catch (err) {
         console.log(err.response.data.message);
+      } finally {
+        setLoading(false);
       }
     })();
   }, []);
@@ -60,6 +64,7 @@ export default function HomePage() {
     }, 0);
     setBalance(parseFloat(accBalance));
   }, [movements]);
+
   function handleLogout() {
     localStorage.clear();
     navigate('/');
@@ -78,9 +83,12 @@ export default function HomePage() {
       <TransactionsContainer
         movLength={movements.length > 0 ? '' : 'center'}
       >
-        {movements.length > 0
-          ? <TransactionsList balance={balance} movements={movements} setMovements={setMovements} />
-          : <p>Não há registros de entrada ou saída</p>}
+        {loading
+          ? <Loader color={`${({ theme }) => theme.btnBgColor}`} />
+          : movements.length > 0 && !loading
+            ? <TransactionsList balance={balance} movements={movements} setMovements={setMovements} />
+            : <p>Não há registros de entrada ou saída</p> }
+
       </TransactionsContainer>
 
       <ButtonsContainer>

@@ -1,11 +1,13 @@
-import { useContext, useRef } from 'react';
+import { useContext, useRef, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { Container, Logo } from './style';
 import Form from '../../components/Form';
 import { AuthContext } from '../../contexts/AuthContext/AuthContext';
+import Loader from '../../components/Loaders/Loader';
 
 export default function LoginPage() {
+  const [loading, setLoading] = useState(false);
   const inputRef = useRef({});
   const checkboxRef = useRef();
   const navigate = useNavigate();
@@ -25,6 +27,8 @@ export default function LoginPage() {
 
     const body = { email, password };
 
+    setLoading(true);
+
     return axios
       .post(`${process.env.REACT_APP_API_URL}/user/signin`, body)
       .then((res) => {
@@ -36,7 +40,8 @@ export default function LoginPage() {
         }
         navigate('/Home');
       })
-      .catch(() => alert('Dados de login inválidos.'));
+      .catch(() => alert('Dados de login inválidos.'))
+      .finally(() => setLoading(false));
   }
 
   return (
@@ -46,7 +51,12 @@ export default function LoginPage() {
         <input type="email" placeholder="E-mail" ref={(element) => inputRef.email = element} />
         <input type="password" placeholder="Senha" ref={(element) => inputRef.pass = element} />
         <div>Mantenha-me conectado <input type="checkbox" onChange={handleCheck} ref={checkboxRef} /></div>
-        <button type="submit" onClick={(e) => handleLogin(e)}> Entrar </button>
+        <button
+          type="submit"
+          onClick={(e) => handleLogin(e)}
+          disabled={loading}
+        > {loading ? <Loader /> : 'Entrar'}
+        </button>
       </Form>
       <Link to="/cadastro">
         Primeira vez? Cadastre-se!

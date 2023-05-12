@@ -1,12 +1,19 @@
 import axios from 'axios';
-import { useContext, useRef, useEffect } from 'react';
+import {
+  useContext,
+  useRef,
+  useEffect,
+  useState,
+} from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { AiOutlineRollback } from 'react-icons/ai';
 import { Container, Header } from './style';
 import Form from '../../components/Form';
 import { AuthContext } from '../../contexts/AuthContext/AuthContext';
+import Loader from '../../components/Loaders/Loader';
 
 export default function TransactionPage() {
+  const [loading, setLoading] = useState(false);
   const { tipo } = useParams();
   const { auth: { token }, setAuth } = useContext(AuthContext);
   const inputsRef = useRef();
@@ -25,6 +32,8 @@ export default function TransactionPage() {
 
     if (!value || !desc || !tipo) return alert('Preencha os dados corretamente');
 
+    setLoading(true);
+
     let opType;
     if (tipo === 'entrada') {
       opType = 'positive';
@@ -42,8 +51,10 @@ export default function TransactionPage() {
     axios
       .post(`${process.env.REACT_APP_API_URL}/account/new_transaction/${opType}`, body, config)
       .then(() => navigate('/home'))
-      .catch((err) => console.log(err.response.data.message));
+      .catch((err) => console.log(err.response.data.message))
+      .finally(() => setLoading(false));
   }
+
   function handleGoBack() {
     return navigate('/home');
   }
@@ -69,7 +80,11 @@ export default function TransactionPage() {
           ref={(element) => inputsRef.desc = element}
           placeholder="Descrição"
         />
-        <button type="submit" onClick={(e) => handleSubmit(e)}> Salvar {tipo} </button>
+        <button
+          type="submit"
+          onClick={(e) => handleSubmit(e)}
+        > {loading ? <Loader /> : 'Salvar'} {!loading && tipo}
+        </button>
       </Form>
     </Container>
   );
