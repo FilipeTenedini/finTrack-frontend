@@ -96,13 +96,13 @@ export default function HomePage() {
       </TransactionsContainer>
 
       <ButtonsContainer>
-        <Link to="/new-transaction/deposit">
+        <Link to="/nova-transacao/deposit">
           <button>
             <AiOutlinePlusCircle />
             <p>Nova <br /> entrada</p>
           </button>
         </Link>
-        <Link to="/new-transaction/withdraw">
+        <Link to="/nova-transacao/withdraw">
           <button>
             <AiOutlineMinusCircle />
             <p>Nova <br />saída</p>
