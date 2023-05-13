@@ -34,7 +34,7 @@ export default function Movement({ item, setMovements }) {
     <Register opColor={item.type}>
       <div>{item.data.slice(0, 5)}</div>
       <div>
-        <Link to={`/editar-registro/${item.type === 'negative' ? 'saida' : 'entrada'}`} state={{ item }}>
+        <Link to={`/edit-transaction/${item.type === 'negative' ? 'saida' : 'entrada'}`} state={{ item }}>
           {item.desc}
         </Link>
       </div>

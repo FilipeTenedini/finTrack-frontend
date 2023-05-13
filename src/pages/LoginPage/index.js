@@ -58,7 +58,7 @@ export default function LoginPage() {
         > {loading ? <Loader /> : 'Entrar'}
         </button>
       </Form>
-      <Link to="/cadastro">
+      <Link to="/register">
         Primeira vez? Cadastre-se!
       </Link>
     </Container>
