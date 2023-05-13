@@ -13,7 +13,7 @@ export default function EditPage() {
   const [itemToEdit, setItemToEdit] = useState({
     value: state.item.opValue, desc: state.item.desc,
   });
-  const { tipo } = useParams();
+  const { type } = useParams();
   const { auth: { token }, setAuth } = useContext(AuthContext);
   const navigate = useNavigate();
 
@@ -46,7 +46,7 @@ export default function EditPage() {
       <Header>
         <div>
           <h1>
-            Editar {tipo}
+            Editar {type}
           </h1>
           <AiOutlineRollback onClick={() => handleGoBack()} />
         </div>
@@ -58,7 +58,7 @@ export default function EditPage() {
           type="submit"
           onClick={handleEditItem}
           disabled={loading}
-        > {loading ? <Loader /> : 'Atualizar'} {!loading && tipo}
+        > {loading ? <Loader /> : 'Atualizar'} {!loading && type}
         </button>
       </Form>
     </Container>

@@ -14,7 +14,7 @@ import Loader from '../../components/Loaders/Loader';
 
 export default function TransactionPage() {
   const [loading, setLoading] = useState(false);
-  const { tipo } = useParams();
+  const { type } = useParams();
   const { auth: { token }, setAuth } = useContext(AuthContext);
   const inputsRef = useRef();
   const navigate = useNavigate();
@@ -30,14 +30,14 @@ export default function TransactionPage() {
     const { desc: { value: desc }, value: { value } } = inputsRef;
     const newValue = Number(value).toFixed(2);
 
-    if (!value || !desc || !tipo) return alert('Preencha os dados corretamente');
+    if (!value || !desc || !type) return alert('Preencha os dados corretamente');
 
     setLoading(true);
 
     let opType;
-    if (tipo === 'entrada') {
+    if (type === 'entrada') {
       opType = 'positive';
-    } else if (tipo === 'saida') {
+    } else if (type === 'saida') {
       opType = 'negative';
     }
     const body = {
@@ -64,7 +64,7 @@ export default function TransactionPage() {
       <Header>
         <div>
           <h1>
-            Nova {tipo}
+            Nova {type}
           </h1>
           <AiOutlineRollback onClick={() => handleGoBack()} />
         </div>
@@ -83,7 +83,7 @@ export default function TransactionPage() {
         <button
           type="submit"
           onClick={(e) => handleSubmit(e)}
-        > {loading ? <Loader /> : 'Salvar'} {!loading && tipo}
+        > {loading ? <Loader /> : 'Salvar'} {!loading && type}
         </button>
       </Form>
     </Container>

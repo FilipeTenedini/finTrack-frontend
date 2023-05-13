@@ -13,7 +13,6 @@ export default function ThemeProv({ children }) {
 
   useEffect(() => {
     const userTheme = JSON.parse(localStorage.getItem('userTheme'));
-    console.log(userTheme.theme);
     if (!userTheme) return setTheme('dark');
     return setTheme(userTheme.theme);
   }, []);
